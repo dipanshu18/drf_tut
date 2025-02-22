@@ -11,15 +11,18 @@ ENV PATH="/root/.local/bin/:$PATH"
 
 ARG DEV=false
 WORKDIR /app
+
+# Create virtual env
+RUN uv venv /app/.venv
+ENV PATH="/app/.venv/bin:$PATH"
+
 COPY ./pyproject.toml /app/pyproject.toml
 COPY . .
 EXPOSE 8000
 
-RUN uv venv .venv && \
-  source .venv/bin/activate && \
-  uv sync --no-dev && \
-  if [$DEV = "true"]; \
-  then uv add --dev ruff; \
-  fi;
+RUN uv sync --no-dev && \
+if [$DEV = "true"]; \
+then uv add --dev ruff; \
+fi
 
 CMD ["uv", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]

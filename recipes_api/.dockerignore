@@ -1,6 +1,9 @@
 .git
 .gitignore
 Dockerfile
+.env
+.env/
+venv/
 .venv/
 README.md
 uv.lock
