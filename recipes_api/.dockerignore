@@ -1,0 +1,17 @@
+.git
+.gitignore
+Dockerfile
+.venv/
+README.md
+uv.lock
+__pycache__/
+./*/__pycache__/
+./*/*/__pycache__/
+./*/*/*/__pycache__/
+.ruff_cache/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.python-version
